@@ -8,12 +8,25 @@ public static class Arrays
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     public static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // First, make a new array named multiples.
+        // The array has the size from length.
+        // This array will save all the multiples.
+        double[] multiples = new double[length];
 
-        return []; // replace this return statement with your own
+        // This loop go to each place in the array.
+        // The for loop starts at 0 because arrays start at 0.
+        // Keep going until all places have a value.
+        for (int i = 0; i < length; i++)
+        {
+            // Find the next multiple with the formula number * (i + 1).
+            // Use i + 1 so the first number is the number itself.
+            // Save the value in the array.
+            multiples[i] = number * (i + 1);
+        }
+
+        // Return the array.
+        return multiples;
+
     }
 
     /// <summary>
@@ -25,9 +38,22 @@ public static class Arrays
     /// </summary>
     public static void RotateListRight(List<int> data, int amount)
     {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+
+        // The for loop continues until the amount is done.
+        // Every time, we move one number from the end to the front.
+        for (int i = 0; i < amount; i++)
+        {
+            // Save the last number.
+            // We need to save it before removing it.
+            int lastValue = data[data.Count - 1];
+
+            // Remove the last number from the list with the RemoveAt method.
+            data.RemoveAt(data.Count - 1);
+
+            // The number that was saved in lastValue, we put it at the front.
+            // This moves the list one place to the right using the Insert method.
+            data.Insert(0, lastValue);
+        }
+
     }
 }
