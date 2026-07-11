@@ -31,6 +31,7 @@ public class TakingTurnsQueue
     /// person has an infinite number of turns.  An error exception is thrown 
     /// if the queue is empty.
     /// </summary>
+
     public Person GetNextPerson()
     {
         if (_people.IsEmpty())
@@ -40,9 +41,16 @@ public class TakingTurnsQueue
         else
         {
             Person person = _people.Dequeue();
-            if (person.Turns > 1)
+            if (person.Turns > 0)
             {
-                person.Turns -= 1;
+                person.Turns --;
+                if (person.Turns > 0)
+                {
+                    _people.Enqueue(person);
+                }    
+            }
+            else 
+            {
                 _people.Enqueue(person);
             }
 
